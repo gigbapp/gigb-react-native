@@ -1,0 +1,12 @@
+{
+  "name": "gigb-react-native",
+  "displayName": "gigb-react-native",
+  "expo": {
+    "name": "gigb-react-native",
+    "slug": "gigb-react-native",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
