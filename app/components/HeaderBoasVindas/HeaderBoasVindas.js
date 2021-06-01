@@ -4,7 +4,7 @@ import { View, StyleSheet, Text } from "react-native";
 const HeaderBoasVindas = (props) => {
   return (
     <View style={styles.container}>
-        <Text style={styles.boasVindas}>Boa noite, @nomeUsuário.</Text>
+        <Text style={styles.boasVindas}>Boa noite, @nomeUsuário</Text>
         <Text style={styles.title}>{props.title}</Text>
     </View>
   );
@@ -12,17 +12,18 @@ const HeaderBoasVindas = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 50
+    paddingTop: 40
   },
   boasVindas: {
     color: "#68378D",
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: "bold",
     textAlign: "right"
   },
   title: {
-    paddingTop: 12,
-    padding: 15,
+    paddingTop: 10,
+    padding: 0,
+    paddingRight: 100,
     color: "#3B3838",
     fontSize: 35,
     textAlign: "right"
