@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, VirtualizedList, StatusBar, Image } from 'react-native';
 import HeaderBoasVindas from '../../components/HeaderBoasVindas/HeaderBoasVindas';
-import music from '../../images/iconmusic.jpg';
+import music from '../../images/icon/iconMusic.jpg';
 import listaEventos from '../../services/eventos.json';
 
 
@@ -38,7 +38,7 @@ const Home = () => {
     return (
         <>  
             <View>
-                <HeaderBoasVindas />
+                <HeaderBoasVindas  />
             </View>
             <View >
                 <Text style={styles.title}>Seus próximos eventos</Text>
