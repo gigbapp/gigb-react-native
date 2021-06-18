@@ -1,13 +1,11 @@
 import React from "react";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
-import { Card } from "react-native-elements";
-import { StyleSheet, Text, View , Image} from "react-native";
+import { Card, CardItem } from "react-native-elements";
+import { StyleSheet, Text, View, Image } from "react-native";
 import HeaderPrincipal from "../../components/HeaderPrincipal/HeaderPrincipal";
-import iconMusico from '../../images/icon/iconMusico.png';
-import iconNegocio from '../../images/icon/iconNegocio.png';
-
-
+import iconMusico from "../../images/icon/iconMusico.png";
+import iconNegocio from "../../images/icon/iconNegocio.png";
 
 const fetchFont = () => {
   return Font.loadAsync({
@@ -35,17 +33,17 @@ const EscolhaTipoCadastro = () => {
       <HeaderPrincipal />
       <View>
         <Text style={styles.pergunta}>Como você deseja se cadastrar?</Text>
-
-        <Card>
-          <Card.Title>CARD WITH DIVIDER</Card.Title>
-          <Card.Divider />   
-        
-              <View style={styles.user}>
-                <Image  style={styles.image}  resizeMode="cover"  source={iconMusico} />
-                <Text style={styles.name}>Músico</Text>
-              </View>
-            
-        </Card>
+        <Text>{"\n\n"}</Text>
+          <View style={styles.linhaPerfil}>
+            <Image style={styles.image} source={iconMusico} />
+            <Text style={styles.tipoPerfil} > &nbsp; &nbsp; &nbsp; Artista</Text>
+          </View> 
+          
+          <View style={styles.linhaPerfil}>
+            <Image style={styles.image} source={iconNegocio} />
+            <Text style={styles.tipoPerfil} > &nbsp; &nbsp; &nbsp; Negócios</Text>
+          </View> 
+ 
       </View>
     </>
   );
@@ -63,6 +61,26 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "right",
     fontFamily: "Ubuntu",
+  },
+  image: {
+    width: 80,
+    height: 80,
+  },
+  tipoPerfil: {
+    marginTop: -10,
+    color: "#68378D",
+    fontSize: 18,
+    textAlign: "center",
+    fontFamily: "Ubuntu",
+  },
+  linhaPerfil: {
+    flexDirection: "row",
+    alignItems: "center",
+    margin:20,
+    padding:10,
+    borderRadius: 9,
+    borderColor: '#e6e6e6',
+    borderWidth: 1,
   },
 });
 

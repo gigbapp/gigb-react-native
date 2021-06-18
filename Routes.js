@@ -19,7 +19,7 @@ const AppStack = createStackNavigator();
 const Routes=() =>{
     return(
         <NavigationContainer>
-            <AppStack.Navigator headerMode="none" initialRouteName="Home">
+            <AppStack.Navigator headerMode="none" initialRouteName="Login">
                 <AppStack.Screen name="Login" component={Login}/>
                 <AppStack.Screen name="EscolhaCadastro" component={EscolhaCadastro}/>
                 <AppStack.Screen name="SenhaCadastro" component={SenhaCadastro}/>
