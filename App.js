@@ -1,17 +1,7 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import HeaderBoasVindas from "./app/components/HeaderBoasVindas/HeaderBoasVindas";
-import HeaderPrincipal from "./app/components/HeaderPrincipal/HeaderPrincipal";
+import React from 'react';
+import Routes from './Routes'
 
-export default function App({ navigation }) {
+export default function App () {
+  return <Routes/>;
+};
 
-  return (
-      <View></View>
-  );
-}
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-});
