@@ -4,6 +4,7 @@ import HeaderPrincipal from "../../components/HeaderPrincipal/HeaderPrincipal";
 import { Button } from "react-native-elements";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
+import { verificarCampoPreenchidoObrigatorio, verificarEmailPreenchidoCorretamente } from "../../validacao/CamposObrigatorios";
 
 const fetchFont = () => {
   return Font.loadAsync({
@@ -15,6 +16,18 @@ const Login = ({navigation}) => {
   const [email, setEmail] = React.useState("");
   const [senha, setSenha] = React.useState("");
   const [fontLoaded, setFontLoaded] = React.useState(false);
+
+  const validarCampos =  () => {
+    if(!verificarCampoPreenchidoObrigatorio(email) || !verificarCampoPreenchidoObrigatorio(senha)){
+      alert('Preencha os campos corretamente.');
+    }
+    else if(!verificarEmailPreenchidoCorretamente(email)){
+      alert('E-mail informado está incorreto.');
+    }
+    else {
+      navigation.navigate('Home');
+    }
+  };
 
   if (!fontLoaded) {
     return (
@@ -48,7 +61,7 @@ const Login = ({navigation}) => {
         />
       </View>
       <View style={{paddingTop:30}}>
-        <Button buttonStyle={styles.btEntrar} title="Entrar"  onPress={()=>{navigation.navigate('Home')}}/>
+        <Button buttonStyle={styles.btEntrar} title="Entrar"  onPress={() => {validarCampos();}}/>
         <Button
           buttonStyle={styles.btRegistrar}
           titleStyle={styles.tituloBotao}
