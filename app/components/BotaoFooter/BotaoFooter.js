@@ -5,7 +5,7 @@ import { Button } from 'react-native-elements';
 const BotaoFooter = (props) => {
     return (
         <View>
-          <Button buttonStyle={styles.bt}  title= {props.title} onPress={() => {navigation.navigate(props.pagRedirecionar)}} />
+          <Button buttonStyle={styles.bt}  title= {props.title} onPress={props.onPress} />
         </View>
     )
 }

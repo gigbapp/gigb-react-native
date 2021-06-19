@@ -1,11 +1,11 @@
 import React from "react";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
-import { Card, CardItem } from "react-native-elements";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image,TouchableOpacity } from "react-native";
 import HeaderPrincipal from "../../components/HeaderPrincipal/HeaderPrincipal";
 import iconMusico from "../../images/icon/iconMusico.png";
 import iconNegocio from "../../images/icon/iconNegocio.png";
+ 
 
 const fetchFont = () => {
   return Font.loadAsync({
@@ -13,7 +13,7 @@ const fetchFont = () => {
   });
 };
 
-const EscolhaTipoCadastro = () => {
+const EscolhaTipoCadastro = ({navigation}) => {
   const [fontLoaded, setFontLoaded] = React.useState(false);
 
   if (!fontLoaded) {
@@ -34,15 +34,16 @@ const EscolhaTipoCadastro = () => {
       <View>
         <Text style={styles.pergunta}>Como você deseja se cadastrar?</Text>
         <Text>{"\n\n"}</Text>
-          <View style={styles.linhaPerfil}>
+   
+            <TouchableOpacity style={styles.linhaPerfil} onPress={()=>{navigation.navigate('DadosPessoais',{pag:'DadosArtisticos'})}}>
             <Image style={styles.image} source={iconMusico} />
             <Text style={styles.tipoPerfil} > &nbsp; &nbsp; &nbsp; Artista</Text>
-          </View> 
-          
-          <View style={styles.linhaPerfil}>
+            </TouchableOpacity>
+         
+          <TouchableOpacity style={styles.linhaPerfil} onPress={()=>{navigation.navigate('DadosPessoais', {pag:'SenhaCadastro'})}}>
             <Image style={styles.image} source={iconNegocio} />
             <Text style={styles.tipoPerfil} > &nbsp; &nbsp; &nbsp; Negócios</Text>
-          </View> 
+          </TouchableOpacity> 
  
       </View>
     </>

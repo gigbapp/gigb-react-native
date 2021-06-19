@@ -11,7 +11,7 @@ const fetchFont = () => {
   });
 };
 
-const DadosPessoaisCadastro = (route) => {
+const DadosPessoaisCadastro = ({navigation, route}) => {
   const [fontLoaded, setFontLoaded] = React.useState(false);
 
   if (!fontLoaded) {
@@ -30,43 +30,36 @@ const DadosPessoaisCadastro = (route) => {
     <>
       <View style={{ margin: 8 }}>
         <View>
-          <Text style={styles.titulo}>Bem Vindo ao Gig B,</Text>
+          <Text style={styles.titulo}>Bem Vindo ao Gig B, </Text>
           <Text style={styles.subtitulo}>
             {" "}
             Por favor, informe seus dados pessoais para completar essa etapa.{" "}
           </Text>
         </View>
         <View style={styles.containerInputs}>
-          <Text style={styles.tituloInput}>
-            CPF/CNPJ <span style={{ color: "red" }}>*</span>
-          </Text>
+          
+          <Text style={styles.tituloInput}> CPF/CNPJ <span style={{ color: "red" }}>*</span></Text>
           <TextInput placeholder="CPF/CNPJ" style={styles.input} />
-          <Text style={styles.tituloInput}>
-            Nome completo <span style={{ color: "red" }}>*</span>
-          </Text>
+          
+          <Text style={styles.tituloInput}>Nome completo <span style={{ color: "red" }}>*</span></Text>
           <TextInput placeholder="Nome completo " style={styles.input} />
-          <Text style={styles.tituloInput}>
-            {" "}
-            E-mail <span style={{ color: "red" }}>*</span>
-          </Text>
+        
+          <Text style={styles.tituloInput}> E-mail <span style={{ color: "red" }}>*</span></Text>
           <TextInput placeholder="E-mail" style={styles.input} />
-          <Text style={styles.tituloInput}>
-            {" "}
-            Telefone <span style={{ color: "red" }}>*</span>
-          </Text>
+           
+          <Text style={styles.tituloInput}>Telefone <span style={{ color: "red" }}>*</span></Text>
           <TextInput placeholder="Telefone" style={styles.input} />
-          <Text style={styles.tituloInput}>
-            {" "}
-            Sexo <span style={{ color: "red" }}>*</span>
-          </Text>
+          
+          <Text style={styles.tituloInput}>Sexo <span style={{ color: "red" }}>*</span></Text>
           <Picker style={styles.pickerSexo}>
             <Picker.Item label="Feminino" value="F" />
             <Picker.Item label="Masculino" value="M" />
             <Picker.Item label="Prefiro não informar" value="PNI" />
           </Picker>
+
         </View>
         <View style={{ margin: 3, paddingTop: 20 }}>
-          <BotaoFooter title="Avançar" />
+          <BotaoFooter title="Avançar" onPress={()=>{navigation.navigate(route.params.pag)}} />
         </View>
       </View>
     </>

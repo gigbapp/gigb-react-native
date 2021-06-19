@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, TextInput, Text } from "react-native";
+import { View, StyleSheet, TextInput, Text, TouchableOpacity } from "react-native";
 import HeaderPrincipal from "../../components/HeaderPrincipal/HeaderPrincipal";
 import { Button } from "react-native-elements";
 import * as Font from "expo-font";
@@ -11,7 +11,7 @@ const fetchFont = () => {
   });
 };
 
-const Login = (route) => {
+const Login = ({navigation}) => {
   const [email, setEmail] = React.useState("");
   const [senha, setSenha] = React.useState("");
   const [fontLoaded, setFontLoaded] = React.useState(false);
@@ -48,13 +48,16 @@ const Login = (route) => {
         />
       </View>
       <View style={{paddingTop:30}}>
-        <Button buttonStyle={styles.btEntrar} title="Entrar" />
+        <Button buttonStyle={styles.btEntrar} title="Entrar"  onPress={()=>{navigation.navigate('Home')}}/>
         <Button
           buttonStyle={styles.btRegistrar}
           titleStyle={styles.tituloBotao}
-          title="Criar conta"
+          title="Registre-se"  onPress={()=>{navigation.navigate('EscolhaCadastro')}}
         />
+        <TouchableOpacity onPress={()=>{navigation.navigate('EsqueciMinhaSenha')}}>
         <Text style={styles.esqueciMinhaSenha}>Esqueci minha senha</Text>
+        </TouchableOpacity>
+
       </View>
     </View>
   );

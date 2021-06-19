@@ -11,7 +11,7 @@ const fetchFont = () => {
   });
 };
  
-const DadosArtisticosCadastro = () => {
+const DadosArtisticosCadastro = ({navigation}) => {
   const [fontLoaded, setFontLoaded] = React.useState(false);
 
   if (!fontLoaded) {
@@ -89,7 +89,7 @@ const DadosArtisticosCadastro = () => {
       </View>
 
       <View>
-        <BotoesFooter title="Avançar" pagRedirecionar="SenhaCadastro" />
+        <BotoesFooter  voltar={() => {navigation.goBack();}}   title="Avançar" onPress={()=>{navigation.navigate('SenhaCadastro')}} />
       </View>
     </>
   );

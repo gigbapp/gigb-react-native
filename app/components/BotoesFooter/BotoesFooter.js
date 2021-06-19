@@ -6,10 +6,10 @@ const BotoesFooter = (props) => {
   return (
     <View style={styles.footer}>
       <View>
-        <Button buttonStyle={styles.btVoltar}  title="Voltar"  onPress={() => {navigation.goBack();}}/>
+        <Button buttonStyle={styles.btVoltar}  title="Voltar"  onPress={props.voltar}/>
       </View>
       <View>
-        <Button buttonStyle={styles.btRight} title={props.title} onPress={() => {navigation.navigate(props.pagRedirecionar)}} />
+        <Button buttonStyle={styles.btRight} title={props.title} onPress={props.onPress} />
       </View>
     </View>
   );

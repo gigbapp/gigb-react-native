@@ -10,7 +10,7 @@ const fetchFont = () => {
   });
 };
 
-const SenhaCadastro = () => {
+const SenhaCadastro = ({navigation}) => {
   const [fontLoaded, setFontLoaded] = React.useState(false);
 
   if (!fontLoaded) {
@@ -44,7 +44,7 @@ const SenhaCadastro = () => {
         </View>
       </View>
       <View style={{ paddingTop: 200 }}>
-        <BotoesFooter title="Finalizar" pagRedirecionar="Home" />
+        <BotoesFooter voltar={() => {navigation.goBack();}} title="Finalizar" onPress={()=>{navigation.navigate('Home')}} />
       </View>
     </>
   );
