@@ -4,6 +4,7 @@ import { CheckBox } from "react-native-elements";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import BotoesFooter from "../../../components/BotoesFooter/BotoesFooter";
+import { verificarCampoPreenchidoObrigatorio} from "../../../validacao/CamposObrigatorios";
 
 const fetchFont = () => {
   return Font.loadAsync({
@@ -11,8 +12,27 @@ const fetchFont = () => {
   });
 };
  
-const DadosArtisticosCadastro = ({navigation}) => {
+const DadosArtisticosCadastro = ({navigation,route}) => {
   const [fontLoaded, setFontLoaded] = React.useState(false);
+  const [nomeArtistico, setNomeArtistico] = React.useState("");
+  const [instagram, setInstagram] = React.useState("");
+  const [youtube, setYoutube] = React.useState("");
+
+  const validarCampos =  () => {
+    if(!verificarCampoPreenchidoObrigatorio(nomeArtistico) || !verificarCampoPreenchidoObrigatorio(instagram)
+       || !verificarCampoPreenchidoObrigatorio(youtube)) {
+         alert('Preencha os campos obrigatórios.');
+    }
+    else if(!instagram.includes('.com') || !youtube.includes('.com')){
+      alert('Link do instagram ou youtube está incorreto.');
+    }
+    else {
+      navigation.navigate('SenhaCadastro',{cpfCnpj: route.params.cpfCnpj, nome: route.params.nome, 
+                                           email: route.params.email, telefone: route.params.telefone, 
+                                           sexo: route.params.sexo, nomeArtistico: nomeArtistico,
+                                           instagram: instagram, youtube: youtube});
+    }
+  };
 
   if (!fontLoaded) {
     return (
@@ -29,38 +49,23 @@ const DadosArtisticosCadastro = ({navigation}) => {
   return (
     <>
       <View style={{ margin: 8 }}>
-        <Text style={styles.subtitulo}>
-          {" "}
-          Para essa etapa, vamos falar sobre seus dados artísticos.
-        </Text>
+        <Text style={styles.subtitulo}> {" "} Para essa etapa, vamos falar sobre seus dados artísticos. </Text>
 
         <View style={{ paddingTop: 15 }}>
-          <Text style={styles.tituloInput}>
-            Nome Artístico <span style={{ color: "red" }}>*</span>
-          </Text>
-          <TextInput placeholder="Nome Artístico" style={styles.input} />
+         
+          <Text style={styles.tituloInput}>Nome Artístico <span style={{ color: "red" }}>*</span></Text>
+          <TextInput placeholder="Nome Artístico" onChangeText={(text) => setNomeArtistico(text)} style={styles.input} />
 
-          <Text style={styles.tituloInput}>
-            Gêneros Musicais <span style={{ color: "red" }}>*</span>
-          </Text>
-          <TextInput placeholder="Gêneros Musicais" style={styles.input} />
+          <Text style={styles.tituloInput}>Gêneros Musicais <span style={{ color: "red" }}>*</span></Text>
+          <TextInput placeholder="Gêneros Musicais"  style={styles.input} />
 
-          <Text style={styles.tituloInput}>
-            Link do Instagram <span style={{ color: "red" }}>*</span>
-          </Text>
-          <TextInput placeholder="Link do Instagram" style={styles.input} />
+          <Text style={styles.tituloInput}>Link do Instagram <span style={{ color: "red" }}>*</span></Text>
+          <TextInput placeholder="Link do Instagram" onChangeText={(text) => setInstagram(text)} style={styles.input} />
 
-          <Text style={styles.tituloInput}>
-            Link do Canal do Youtube <span style={{ color: "red" }}>*</span>
-          </Text>
-          <TextInput
-            placeholder="Link do Canal do Youtube"
-            style={styles.input}
-          />
+          <Text style={styles.tituloInput}>Link do Canal do Youtube <span style={{ color: "red" }}>*</span></Text>
+          <TextInput  placeholder="Link do Canal do Youtube" onChangeText={(text) => setYoutube(text)} style={styles.input}/>
 
-          <Text style={styles.tituloInput}>
-            Escolha uma categoria <span style={{ color: "red" }}>*</span>
-          </Text>
+          <Text style={styles.tituloInput}>Escolha uma categoria <span style={{ color: "red" }}>*</span></Text>
 
           <CheckBox
             fontFamily="Ubuntu"

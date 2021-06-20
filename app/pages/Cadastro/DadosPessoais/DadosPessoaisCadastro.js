@@ -5,7 +5,7 @@ import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { Picker } from "@react-native-picker/picker";
 import { verificarCampoPreenchidoObrigatorio, verificarEmailPreenchidoCorretamente, retirarEspacamento } from "../../../validacao/CamposObrigatorios";
-
+import {cpfCnpjIsValid} from '../../../validacao/CpfCnpj';
 
 const fetchFont = () => {
   return Font.loadAsync({
@@ -30,6 +30,9 @@ const DadosPessoaisCadastro = ({navigation, route}) => {
     }
     else if(!verificarEmailPreenchidoCorretamente(email)){
       alert('E-mail informado está incorreto.');
+    }
+    else if (!cpfCnpjIsValid(cpfCnpj)){
+      alert('CPF/CNPJ não é válido.')
     }
     else {
       navigation.navigate(route.params.pag,{cpfCnpj: cpfCnpj, nome: nome, email: email, telefone: telefone, sexo: sexo});

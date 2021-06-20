@@ -12,8 +12,6 @@ import QuemSomos from './app/pages/QuemSomos/QuemSomos';
 import Home from './app/pages/Home/Home';
 import EsqueciMinhaSenha from './app/pages/EsqueciMinhaSenha/EsqueciMinhaSenha';
 
-
-
 const AppStack = createStackNavigator();
 
 const Routes=() =>{

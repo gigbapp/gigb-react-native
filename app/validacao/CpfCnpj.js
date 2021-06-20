@@ -1,4 +1,4 @@
-   export const cpfIsValid = (val) => {
+   export const cpfCnpjIsValid = (val) => {
         if (val.length == 14) {
             var cpf = val.trim();
 
