@@ -3,7 +3,14 @@ import { StyleSheet, Text, View, SafeAreaView, VirtualizedList, StatusBar, Image
 import HeaderBoasVindas from '../../components/HeaderBoasVindas/HeaderBoasVindas';
 import music from '../../images/icon/iconMusic.jpg';
 import listaEventos from '../../services/eventos.json';
+import * as Font from "expo-font";
+import AppLoading from "expo-app-loading";
 
+const fetchFont = () => {
+  return Font.loadAsync({
+    Ubuntu: require("../../fonts/Ubuntu-Light.ttf"),
+  });
+};
 
 const DATA = [];
 const listaDeEventos = listaEventos;
@@ -34,15 +41,26 @@ const Item = ({ title, dataEvento, status, organizador, chave  }) => (
 );
 
 const Home = () => {
+  const [fontLoaded, setFontLoaded] = React.useState(false);
+
+  if (!fontLoaded) {
+    return (
+      <AppLoading
+        onError={() => console.log("ERRO")}
+        startAsync={fetchFont}
+        onFinish={() => {
+          setFontLoaded(true);
+        }}
+      />
+    );
+  }
    
     return (
         <>  
             <View>
-                <HeaderBoasVindas  />
+                <HeaderBoasVindas title="Seus próximos eventos" />
             </View>
-            <View >
-                <Text style={styles.title}>Seus próximos eventos</Text>
-            </View>
+
             <View style={styles.containerGeral}>
                 <SafeAreaView style={styles.container} >
                     <VirtualizedList
@@ -63,22 +81,14 @@ const styles = StyleSheet.create({
     container: {
         marginTop: StatusBar.currentHeight,
       },
-      title: {
-        paddingTop: 0,
-        padding: 3,
-        paddingRight: 17,
-        color: "#3B3838",
-        fontSize: 28,
-        textAlign: "right"
-      },
       containerGeral: {
-        paddingTop: 0,
+        paddingTop: 10,
         paddingBottom: 200,
       },
       item: {
-        backgroundColor: '#c2bebe',
+        backgroundColor: '#e6e6e6',
         borderRadius: 5,
-        height: 120,
+        height: 100,
         justifyContent: 'flex-start',
         marginVertical: 8,
         marginHorizontal: 16,
@@ -97,24 +107,27 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         margin:2, 
         width: "72%",
+        fontFamily: "Ubuntu"
       },
       titleList: {
-        fontSize: 21,
+        fontSize: 18,
         color: "#68378D",
         textAlign: "left",
         fontWeight: "bold",
+        fontFamily: "Ubuntu",
       },
       textList: {
         fontSize: 14,
         color: "#3B3838",
-        textAlign: "left"
+        textAlign: "left",
+        fontFamily: "Ubuntu"
       },fotos: {
-        width: 90,
-        height: 90,
+        width: 70,
+        height: 70,
         borderRadius: 45,
       },
 })
 
-export default Home
+export default Home;
 
 

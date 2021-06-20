@@ -4,6 +4,8 @@ import HeaderPrincipal from "../../components/HeaderPrincipal/HeaderPrincipal";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import BotoesFooter from "../../components/BotoesFooter/BotoesFooter";
+import { verificarCampoPreenchidoObrigatorio, verificarEmailPreenchidoCorretamente } from "../../validacao/CamposObrigatorios";
+
 
 const fetchFont = () => {
   return Font.loadAsync({
@@ -12,7 +14,20 @@ const fetchFont = () => {
 };
 
 const EsqueciMinhaSenha = ({navigation}) => {
+  const [email, setEmail] = React.useState("");
   const [fontLoaded, setFontLoaded] = React.useState(false);
+
+  const validarCampos =  () => {
+    if(!verificarCampoPreenchidoObrigatorio(email)){
+      alert('Preencha os campos corretamente.');
+    }
+    else if(!verificarEmailPreenchidoCorretamente(email)){
+      alert('E-mail informado está incorreto.');
+    }
+    else {
+      alert('Link de redefinição de senha enviado com sucesso!');
+    }
+  };
 
   if (!fontLoaded) {
     return (
@@ -31,13 +46,11 @@ const EsqueciMinhaSenha = ({navigation}) => {
       <HeaderPrincipal />
       <View>
         <Text style={styles.titulo}>Esqueceu sua senha?</Text>
-        <Text style={styles.subtitulo}>
-          Nós resolvemos isso rapidinho, por favor, digite o e-mail cadastrado:
-        </Text>
-        <TextInput placeholder="E-mail" style={styles.input} />
+        <Text style={styles.subtitulo}> Nós resolvemos isso rapidinho, por favor, digite o e-mail cadastrado:</Text>
+        <TextInput placeholder="E-mail" style={styles.input}  onChangeText={(texto) => setEmail(texto)} />
       </View>
-      <View style={{ paddingTop: 200 }}>
-        <BotoesFooter voltar={() => {navigation.goBack();}} title="Enviar" onPress={()=>alert('Link de redefinição de senha enviado com sucesso!')} />
+      <View style={{ paddingTop: 210 }}>
+        <BotoesFooter voltar={() => {navigation.goBack();}} title="Enviar" onPress={()=> validarCampos()} />
       </View>
     </>
   );
@@ -65,15 +78,6 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop:30,
     margin: 7,
-  },
-
-  btEnviar: {
-    backgroundColor: "#68378D",
-    borderRadius: 5,
-    margin:7,
-    padding: 10,
-    marginTop:200
-    
   },
 });
 

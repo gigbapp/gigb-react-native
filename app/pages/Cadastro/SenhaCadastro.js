@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, TextInput } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import BotoesFooter from "../../components/BotoesFooter/BotoesFooter";
+import {verificarCampoPreenchidoObrigatorio } from "../../validacao/CamposObrigatorios";
+
 
 const fetchFont = () => {
   return Font.loadAsync({
@@ -10,8 +12,22 @@ const fetchFont = () => {
   });
 };
 
-const SenhaCadastro = ({navigation}) => {
+const SenhaCadastro = ({navigation, route}) => {
   const [fontLoaded, setFontLoaded] = React.useState(false);
+  const [senha, setSenha] = React.useState("");
+  const [confirmacaoSenha, setConfirmacaoSenha] = React.useState("");
+
+  const validarCampos =  () => {
+    if(!verificarCampoPreenchidoObrigatorio(senha) || !verificarCampoPreenchidoObrigatorio(confirmacaoSenha)){
+     alert('Preencha os campos obrigatórios.');
+    }
+    else if(senha != confirmacaoSenha){
+      alert('Senhas informadas não correspondem.');
+    }
+    else {
+      navigation.navigate('Home', {nomeUsuario: route.params.nome});
+    }
+  };
 
   if (!fontLoaded) {
     return (
@@ -33,18 +49,17 @@ const SenhaCadastro = ({navigation}) => {
         </Text>
 
         <View style={styles.container}>
-          <Text style={styles.tituloInput}>
-            Senha <span style={{ color: "red" }}>*</span>
-          </Text>
-          <TextInput placeholder="Senha" style={styles.input} type="password" />
-          <Text style={styles.tituloInput}>
-            Confirmação de senha <span style={{ color: "red" }}>*</span>
-          </Text>
-          <TextInput placeholder="Confirme sua senha" style={styles.input} />
+         
+          <Text style={styles.tituloInput}> Senha <span style={{ color: "red" }}>*</span></Text>
+          <TextInput placeholder="Senha" style={styles.input} secureTextEntry={true} onChangeText={(text) => setSenha(text)} />
+         
+          <Text style={styles.tituloInput}> Confirmação de senha <span style={{ color: "red" }}>*</span> </Text>
+          <TextInput secureTextEntry={true} placeholder="Confirme sua senha" style={styles.input} onChangeText={(text) => setConfirmacaoSenha(text)} />
+      
         </View>
       </View>
       <View style={{ paddingTop: 200 }}>
-        <BotoesFooter voltar={() => {navigation.goBack();}} title="Finalizar" onPress={()=>{navigation.navigate('Home')}} />
+        <BotoesFooter voltar={() => {navigation.goBack();}} title="Finalizar" onPress={() => {validarCampos();}} />
       </View>
     </>
   );

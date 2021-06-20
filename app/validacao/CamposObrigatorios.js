@@ -6,3 +6,7 @@ export const verificarCampoPreenchidoObrigatorio =  (valor) =>{
 export const verificarEmailPreenchidoCorretamente =  (valor) =>{
     return valor.trim().includes('@')? true: false; 
 };
+
+export const retirarEspacamento = (palavra) => {
+    return palavra.replace('/\s+/g', '')
+}

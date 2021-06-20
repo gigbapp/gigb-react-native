@@ -28,25 +28,26 @@ const HeaderBoasVindas = (props) => {
     <View style={styles.container}>
         <Text style={styles.boasVindas}>Boa noite, @nomeUsuário</Text>
         <Text style={styles.title}>{props.title}</Text>
-
-        
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 40
+    paddingTop: 10
   },
   boasVindas: {
     color: "#68378D",
     fontSize: 16,
     fontWeight: "bold",
     textAlign: "right",
-    fontFamily:'Ubuntu'
+    fontFamily:'Ubuntu',
+    paddingTop:10,
+    margin:5
+
   },
   title: {
-    paddingTop: 10,
+    paddingTop: 30,
     padding: 0,
     paddingRight: 100,
     color: "#3B3838",
