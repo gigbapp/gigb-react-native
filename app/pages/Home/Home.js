@@ -57,8 +57,8 @@ const Home = () => {
    
     return (
         <>  
-            <View>
-                <HeaderBoasVindas title="Seus próximos eventos" />
+            <View style={styles.containerHeader}>
+                <HeaderBoasVindas  title="Seus próximos eventos" />
             </View>
 
             <View style={styles.containerGeral}>
@@ -83,7 +83,11 @@ const styles = StyleSheet.create({
       },
       containerGeral: {
         paddingTop: 10,
-        paddingBottom: 200,
+        paddingBottom: 150,
+      },
+      containerHeader: {
+        paddingTop: 10,
+        paddingBottom: 0,
       },
       item: {
         backgroundColor: '#e6e6e6',
