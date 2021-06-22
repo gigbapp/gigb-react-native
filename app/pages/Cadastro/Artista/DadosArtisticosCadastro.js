@@ -5,7 +5,6 @@ import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import BotoesFooter from "../../../components/BotoesFooter/BotoesFooter";
 import { verificarCampoPreenchidoObrigatorio} from "../../../validacao/CamposObrigatorios";
-import generosMusicais from '../../../util/GeneroMusicaisUtil.json';
 
 const fetchFont = () => {
   return Font.loadAsync({
@@ -22,8 +21,6 @@ const DadosArtisticosCadastro = ({navigation,route}) => {
   const [instagram, setInstagram] = React.useState("");
   const [youtube, setYoutube] = React.useState("");
   const [trajetoria, setTrajetoria] = React.useState("");
-
-const listaGenerosMusicais = generosMusicais;
 
   const validarCampos =  () => {
     if(!verificarCampoPreenchidoObrigatorio(nomeArtistico) || !verificarCampoPreenchidoObrigatorio(instagram)
