@@ -33,13 +33,13 @@ const TrocaDeSenha = () => {
      
       <View style={styles.container}>
      
-      <Text style={styles.tituloInput}>Senha atual <span style={{ color: "red" }}>*</span></Text>
+      <Text style={styles.tituloInput}>Senha atual <Text style={{ color: "red" }}>*</Text></Text>
       <TextInput placeholder="Senha atual" style={styles.input} />
       
-      <Text style={styles.tituloInput}>Nova senha <span style={{ color: "red" }}>*</span></Text>
+      <Text style={styles.tituloInput}>Nova senha <Text style={{ color: "red" }}>*</Text></Text>
       <TextInput placeholder="Nova senha" style={styles.input} />
 
-      <Text style={styles.tituloInput}>Confirmação da nova senha <span style={{ color: "red" }}>*</span></Text>
+      <Text style={styles.tituloInput}>Confirmação da nova senha <Text style={{ color: "red" }}>*</Text></Text>
       <TextInput placeholder="Confirmação da nova senha" style={styles.input} />
 
       <View style={{ margin: 3, paddingTop: 160 }}>

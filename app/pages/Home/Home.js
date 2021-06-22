@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: "#68378D",
         textAlign: "left",
-        fontWeight: "bold",
         fontFamily: "Ubuntu",
       },
       textList: {
@@ -125,7 +124,8 @@ const styles = StyleSheet.create({
         color: "#3B3838",
         textAlign: "left",
         fontFamily: "Ubuntu"
-      },fotos: {
+      },
+      fotos: {
         width: 70,
         height: 70,
         borderRadius: 45,
