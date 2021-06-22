@@ -31,16 +31,16 @@ const fetchFont = () => {
 export default () => {
     return (
         <Drawer.Navigator
-            drawerContent={(props) => <CustomDrawerComp {...props} />}>       
+            drawerContent={(props) => <CustomDrawerComp {...props} />}>   
             <Drawer.Screen name="Login" component={Login} />
             <Drawer.Screen name="EscolhaCadastro" component={EscolhaCadastro} />
             <Drawer.Screen name="SenhaCadastro" component={SenhaCadastro} />
-            <Drawer.Screen name="DadosArtisticos" component={DadosArtisticos} />
             <Drawer.Screen name="DadosPessoais" component={DadosPessoais} />
             <Drawer.Screen name="Home" component={Home} />
             <Drawer.Screen name="TrocaDeSenha" component={TrocaDeSenha} />
             <Drawer.Screen name="QuemSomos" component={QuemSomos} />
             <Drawer.Screen name="EsqueciMinhaSenha" component={EsqueciMinhaSenha} />
+            <Drawer.Screen name="DadosArtisticos" component={DadosArtisticos} />    
         </Drawer.Navigator>
     );
 };

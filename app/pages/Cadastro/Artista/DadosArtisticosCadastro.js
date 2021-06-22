@@ -5,6 +5,7 @@ import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import BotoesFooter from "../../../components/BotoesFooter/BotoesFooter";
 import { verificarCampoPreenchidoObrigatorio} from "../../../validacao/CamposObrigatorios";
+import generosMusicais from '../../../util/GeneroMusicaisUtil.json';
 
 const fetchFont = () => {
   return Font.loadAsync({
@@ -20,21 +21,26 @@ const DadosArtisticosCadastro = ({navigation,route}) => {
   const [nomeArtistico, setNomeArtistico] = React.useState("");
   const [instagram, setInstagram] = React.useState("");
   const [youtube, setYoutube] = React.useState("");
+  const [trajetoria, setTrajetoria] = React.useState("");
 
+const listaGenerosMusicais = generosMusicais;
 
   const validarCampos =  () => {
     if(!verificarCampoPreenchidoObrigatorio(nomeArtistico) || !verificarCampoPreenchidoObrigatorio(instagram)
-       || !verificarCampoPreenchidoObrigatorio(youtube)) {
+       || !verificarCampoPreenchidoObrigatorio(youtube) || !verificarCampoPreenchidoObrigatorio(trajetoria)) {
          alert('Preencha os campos obrigatórios.');
     }
     else if(!instagram.includes('.com') || !youtube.includes('.com')){
       alert('Link do instagram ou youtube está incorreto.');
     }
+    else if(!solo && !dueto && !banda){
+      alert('Selecione uma categoria.');
+    }
     else {
       navigation.navigate('SenhaCadastro',{cpfCnpj: route.params.cpfCnpj, nome: route.params.nome, 
                                            email: route.params.email, telefone: route.params.telefone, 
                                            sexo: route.params.sexo, nomeArtistico: nomeArtistico,
-                                           instagram: instagram, youtube: youtube});
+                                           instagram: instagram, youtube: youtube, trajetoria: trajetoria});
     }
   };
 
@@ -60,17 +66,18 @@ const DadosArtisticosCadastro = ({navigation,route}) => {
           <Text style={styles.tituloInput}>Nome Artístico <Text style={{ color: "red" }}>*</Text></Text>
           <TextInput placeholder="Nome Artístico" onChangeText={(text) => setNomeArtistico(text)} style={styles.input} />
 
-          <Text style={styles.tituloInput}>Gêneros Musicais <Text style={{ color: "red" }}>*</Text></Text>
-          <TextInput placeholder="Gêneros Musicais"  style={styles.input} />
-
           <Text style={styles.tituloInput}>Link do Instagram <Text style={{ color: "red" }}>*</Text></Text>
           <TextInput placeholder="Link do Instagram" onChangeText={(text) => setInstagram(text)} style={styles.input} />
 
           <Text style={styles.tituloInput}>Link do Canal do Youtube <Text style={{ color: "red" }}>*</Text></Text>
           <TextInput  placeholder="Link do Canal do Youtube" onChangeText={(text) => setYoutube(text)} style={styles.input}/>
 
+          <Text style={styles.tituloInput}>Fale um pouco sobre sua trajetória artística <Text style={{ color: "red" }}>*</Text></Text>
+          <TextInput onChangeText={(text) => setTrajetoria(text)} placeholder="Trajetória artística"   multiline={true}  numberOfLines={3}  style={styles.input} />
+          
           <Text style={styles.tituloInput}>Escolha uma categoria <Text style={{ color: "red" }}>*</Text></Text>
 
+         
           <CheckBox
             fontFamily="Ubuntu"
             containerStyle={{ backgroundColor: "transparent", border: "none" }}
@@ -104,7 +111,7 @@ const DadosArtisticosCadastro = ({navigation,route}) => {
       </View>
 
       <View>
-        <BotoesFooter  voltar={() => {navigation.goBack();}}   title="Avançar" onPress={()=>{navigation.navigate('SenhaCadastro')}} />
+        <BotoesFooter  voltar={() => {navigation.goBack();}}   title="Avançar" onPress={()=>{validarCampos()}} />
       </View>
     </>
   );

@@ -26,6 +26,7 @@ const EsqueciMinhaSenha = ({navigation}) => {
     }
     else {
       alert('Link de redefinição de senha enviado com sucesso!');
+      setEmail("");
     }
   };
 
@@ -47,7 +48,7 @@ const EsqueciMinhaSenha = ({navigation}) => {
       <View>
         <Text style={styles.titulo}>Esqueceu sua senha?</Text>
         <Text style={styles.subtitulo}> Nós resolvemos isso rapidinho, por favor, digite o e-mail cadastrado:</Text>
-        <TextInput placeholder="E-mail" style={styles.input}  onChangeText={(texto) => setEmail(texto)} />
+        <TextInput value={email} placeholder="E-mail" style={styles.input}  onChangeText={(texto) => setEmail(texto)} />
       </View>
       <View style={{ paddingTop: 210 }}>
         <BotoesFooter voltar={() => {navigation.goBack();}} title="Enviar" onPress={()=> validarCampos()} />

@@ -27,8 +27,15 @@ const TrocaDeSenha = ({navigation}) => {
     else if(novaSenha != novaSenhaConf){
       alert('A senha nova não corresponde com a confirmação de senha.');
     }
+    else if(senhaAtual === novaSenha){
+      alert('Digite uma nova senha diferente das anteriores.');
+    }
     else {
-      alert("Troca de senha realizada com sucesso.")
+      alert("Troca de senha realizada com sucesso.");
+      setSenhaAtual("");
+      setNovaSenha("");
+      setNovaSenhaConf("");
+
     }
   };
 
@@ -55,13 +62,13 @@ const TrocaDeSenha = ({navigation}) => {
       <View style={styles.container}>
      
       <Text style={styles.tituloInput}>Senha atual <Text style={{ color: "red" }}>*</Text></Text>
-      <TextInput clearButtonMode="always" secureTextEntry={true} onChangeText={(text) => setSenhaAtual(text)} placeholder="Senha atual" style={styles.input} />
+      <TextInput value={senhaAtual} clearButtonMode="always" secureTextEntry={true} onChangeText={(text) => setSenhaAtual(text)} placeholder="Senha atual" style={styles.input} />
       
       <Text style={styles.tituloInput}>Nova senha <Text style={{ color: "red" }}>*</Text></Text>
-      <TextInput secureTextEntry={true} onChangeText={(text) => setNovaSenha(text)} placeholder="Nova senha" style={styles.input} />
+      <TextInput value={novaSenha} secureTextEntry={true} onChangeText={(text) => setNovaSenha(text)} placeholder="Nova senha" style={styles.input} />
 
       <Text style={styles.tituloInput}>Confirmação da nova senha <Text style={{ color: "red" }}>*</Text></Text>
-      <TextInput secureTextEntry={true} onChangeText={(text) => setNovaSenhaConf(text)} placeholder="Confirmação da nova senha" style={styles.input} />
+      <TextInput value={novaSenhaConf} secureTextEntry={true} onChangeText={(text) => setNovaSenhaConf(text)} placeholder="Confirmação da nova senha" style={styles.input} />
 
       <View style={{ margin: 3, paddingTop: 200 }}>
       <BotaoFooter onPress={() => {validarCampos();}} title="Atualizar"/>
