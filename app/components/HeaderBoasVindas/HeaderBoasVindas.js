@@ -40,10 +40,9 @@ const styles = StyleSheet.create({
     color: "#68378D",
     fontSize: 16,
     fontWeight: "bold",
-    textAlign: "right",
+    textAlign: "center",
     fontFamily:'Ubuntu',
     paddingTop:10,
-    margin:5
 
   },
   title: {

@@ -63,19 +63,19 @@ const DadosPessoaisCadastro = ({navigation, route}) => {
         </View>
         <View style={styles.containerInputs}>
           
-          <Text style={styles.tituloInput}> CPF/CNPJ <span style={{color: 'red'}}>*</span> </Text>
+          <Text style={styles.tituloInput}> CPF/CNPJ <Text style={{color: 'red'}}>*</Text> </Text>
           <TextInput placeholder="CPF/CNPJ" style={styles.input} onChangeText={(text) => setCpfCnpj(text)}/>
           
-          <Text style={styles.tituloInput}>Nome completo <span style={{color: 'red'}}>*</span>  </Text>
+          <Text style={styles.tituloInput}>Nome completo <Text style={{color: 'red'}}>*</Text>  </Text>
           <TextInput placeholder="Nome completo" style={styles.input} onChangeText={(text) => setNome(text)} />
         
-          <Text style={styles.tituloInput}> E-mail <span style={{color: 'red'}}>*</span>  </Text>
+          <Text style={styles.tituloInput}> E-mail <Text style={{color: 'red'}}>*</Text>  </Text>
           <TextInput placeholder="E-mail" style={styles.input} onChangeText={(text) => setEmail(retirarEspacamento(text))} />
            
-          <Text style={styles.tituloInput}>Telefone <span style={{color: 'red'}}>*</span>  </Text>
+          <Text style={styles.tituloInput}>Telefone <Text style={{color: 'red'}}>*</Text>  </Text>
           <TextInput placeholder="Telefone" style={styles.input} onChangeText={(text) => setTelefone(text)} />
           
-          <Text style={styles.tituloInput}>Sexo <span style={{color: 'red'}}>*</span>  </Text>
+          <Text style={styles.tituloInput}>Sexo <Text style={{color: 'red'}}>*</Text>  </Text>
           <Picker style={styles.pickerSexo} onValueChange={(text) => setSexo(text)}>
            <Picker.Item label="Selecione um valor" value=" " />
             <Picker.Item label="Feminino" value="F" />

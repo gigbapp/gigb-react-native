@@ -1,13 +1,14 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {
     createDrawerNavigator,
     DrawerContentScrollView,
     DrawerItem,
 } from '@react-navigation/drawer';
+
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
-import { Icon } from 'react-native-elements';
+
 
 import Login from '../app/pages/Login/Login';
 import Home from '../app/pages/Home/Home';
@@ -30,15 +31,15 @@ const fetchFont = () => {
 export default () => {
     return (
         <Drawer.Navigator
-            drawerContent={(props) => <CustomDrawerComp {...props} />}>
+            drawerContent={(props) => <CustomDrawerComp {...props} />}>       
             <Drawer.Screen name="Login" component={Login} />
+            <Drawer.Screen name="QuemSomos" component={QuemSomos} />
             <Drawer.Screen name="EscolhaCadastro" component={EscolhaCadastro} />
             <Drawer.Screen name="SenhaCadastro" component={SenhaCadastro} />
             <Drawer.Screen name="DadosArtisticos" component={DadosArtisticos} />
             <Drawer.Screen name="DadosPessoais" component={DadosPessoais} />
-            <Drawer.Screen name="TrocaDeSenha" component={TrocaDeSenha} />
-            <Drawer.Screen name="QuemSomos" component={QuemSomos} />
             <Drawer.Screen name="Home" component={Home} />
+            <Drawer.Screen name="TrocaDeSenha" component={TrocaDeSenha} />
             <Drawer.Screen name="EsqueciMinhaSenha" component={EsqueciMinhaSenha} />
         </Drawer.Navigator>
     );
@@ -61,7 +62,7 @@ export const CustomDrawerComp = (props) => {
     }
 
     return (
-        <DrawerContentScrollView {...props}>
+        <DrawerContentScrollView {...props} >
             <View style={{ flexGrow: 2 }}>
                 <DrawerItem labelStyle={styles.pagInicial} label="Página Inicial" onPress={() => navigation.navigate('Home')} />
                 <DrawerItem labelStyle={styles.titulo} label="Troca de Senha" onPress={() => navigation.navigate('TrocaDeSenha')} />

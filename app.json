@@ -7,6 +7,19 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "platforms":[
+      "ios",
+      "android",
+      "web"
+    ],
+    "orientation": "portrait",
+    "splash": {
+      "image": "./app/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+
+    }
   }
 }
+

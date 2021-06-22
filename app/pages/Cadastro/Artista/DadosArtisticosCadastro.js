@@ -53,19 +53,19 @@ const DadosArtisticosCadastro = ({navigation,route}) => {
 
         <View style={{ paddingTop: 15 }}>
          
-          <Text style={styles.tituloInput}>Nome Artístico <span style={{ color: "red" }}>*</span></Text>
+          <Text style={styles.tituloInput}>Nome Artístico <Text style={{ color: "red" }}>*</Text></Text>
           <TextInput placeholder="Nome Artístico" onChangeText={(text) => setNomeArtistico(text)} style={styles.input} />
 
-          <Text style={styles.tituloInput}>Gêneros Musicais <span style={{ color: "red" }}>*</span></Text>
+          <Text style={styles.tituloInput}>Gêneros Musicais <Text style={{ color: "red" }}>*</Text></Text>
           <TextInput placeholder="Gêneros Musicais"  style={styles.input} />
 
-          <Text style={styles.tituloInput}>Link do Instagram <span style={{ color: "red" }}>*</span></Text>
+          <Text style={styles.tituloInput}>Link do Instagram <Text style={{ color: "red" }}>*</Text></Text>
           <TextInput placeholder="Link do Instagram" onChangeText={(text) => setInstagram(text)} style={styles.input} />
 
-          <Text style={styles.tituloInput}>Link do Canal do Youtube <span style={{ color: "red" }}>*</span></Text>
+          <Text style={styles.tituloInput}>Link do Canal do Youtube <Text style={{ color: "red" }}>*</Text></Text>
           <TextInput  placeholder="Link do Canal do Youtube" onChangeText={(text) => setYoutube(text)} style={styles.input}/>
 
-          <Text style={styles.tituloInput}>Escolha uma categoria <span style={{ color: "red" }}>*</span></Text>
+          <Text style={styles.tituloInput}>Escolha uma categoria <Text style={{ color: "red" }}>*</Text></Text>
 
           <CheckBox
             fontFamily="Ubuntu"

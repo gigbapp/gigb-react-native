@@ -25,7 +25,7 @@ const SenhaCadastro = ({navigation, route}) => {
       alert('Senhas informadas não correspondem.');
     }
     else {
-      navigation.navigate('Home', {nomeUsuario: route.params.nome});
+      navigation.navigate('Home', {nome: route.params.nome});
     }
   };
 
@@ -50,10 +50,10 @@ const SenhaCadastro = ({navigation, route}) => {
 
         <View style={styles.container}>
          
-          <Text style={styles.tituloInput}> Senha <span style={{ color: "red" }}>*</span></Text>
+          <Text style={styles.tituloInput}> Senha <Text style={{ color: "red" }}>*</Text></Text>
           <TextInput placeholder="Senha" style={styles.input} secureTextEntry={true} onChangeText={(text) => setSenha(text)} />
          
-          <Text style={styles.tituloInput}> Confirmação de senha <span style={{ color: "red" }}>*</span> </Text>
+          <Text style={styles.tituloInput}> Confirmação de senha <Text style={{ color: "red" }}>*</Text> </Text>
           <TextInput secureTextEntry={true} placeholder="Confirme sua senha" style={styles.input} onChangeText={(text) => setConfirmacaoSenha(text)} />
       
         </View>

@@ -5,6 +5,7 @@ import music from '../../images/icon/iconMusic.jpg';
 import listaEventos from '../../services/eventos.json';
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
+import { Icon } from 'react-native-elements';
 
 const fetchFont = () => {
   return Font.loadAsync({
@@ -40,8 +41,9 @@ const Item = ({ title, dataEvento, status, organizador, chave  }) => (
      </View>
 );
 
-const Home = () => {
+const Home = ({route, navigation}) => {
   const [fontLoaded, setFontLoaded] = React.useState(false);
+  const nomeUsuario = route.params? route.params.nome: "@nomeUsuário";
 
   if (!fontLoaded) {
     return (
@@ -57,8 +59,9 @@ const Home = () => {
    
     return (
         <>  
-            <View style={styles.containerHeader}>
-                <HeaderBoasVindas  title="Seus próximos eventos" />
+            <View  style={{flexDirection: "row"}}>
+            <Icon reverse name='menu-outline' type='ionicon' color='#e6e6e6' onPress={() => navigation.openDrawer()}/>
+            <HeaderBoasVindas  nome={nomeUsuario.substring(0, nomeUsuario.indexOf(" "))} title="Seus próximos eventos" />
             </View>
 
             <View style={styles.containerGeral}>
@@ -84,6 +87,7 @@ const styles = StyleSheet.create({
       containerGeral: {
         paddingTop: 10,
         paddingBottom: 150,
+        backgroundColor: '#f2f2f2'
       },
       containerHeader: {
         paddingTop: 10,
@@ -99,7 +103,6 @@ const styles = StyleSheet.create({
         padding: 15,
         alignItems: "center",
         flexDirection: "row",
-        
       },
       itensFoto: {
         paddingLeft: 2,
