@@ -22,7 +22,7 @@ const TrocaDeSenha = ({navigation}) => {
   const validarCampos =  () => {
     if(!verificarCampoPreenchidoObrigatorio(senhaAtual) || !verificarCampoPreenchidoObrigatorio(novaSenha)
        || !verificarCampoPreenchidoObrigatorio(novaSenhaConf)){
-      alert('Preencha os campos corretamente.');
+      alert('Preencha os campos obrigatórios corretamente.');
     }
     else if(novaSenha != novaSenhaConf){
       alert('A senha nova não corresponde com a confirmação de senha.');
@@ -55,7 +55,7 @@ const TrocaDeSenha = ({navigation}) => {
       <View style={styles.container}>
      
       <Text style={styles.tituloInput}>Senha atual <Text style={{ color: "red" }}>*</Text></Text>
-      <TextInput secureTextEntry={true} onChangeText={(text) => setSenhaAtual(text)} placeholder="Senha atual" style={styles.input} />
+      <TextInput clearButtonMode="always" secureTextEntry={true} onChangeText={(text) => setSenhaAtual(text)} placeholder="Senha atual" style={styles.input} />
       
       <Text style={styles.tituloInput}>Nova senha <Text style={{ color: "red" }}>*</Text></Text>
       <TextInput secureTextEntry={true} onChangeText={(text) => setNovaSenha(text)} placeholder="Nova senha" style={styles.input} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Text} from 'react-native';
 import {
     createDrawerNavigator,
     DrawerContentScrollView,
@@ -33,13 +33,13 @@ export default () => {
         <Drawer.Navigator
             drawerContent={(props) => <CustomDrawerComp {...props} />}>       
             <Drawer.Screen name="Login" component={Login} />
-            <Drawer.Screen name="QuemSomos" component={QuemSomos} />
             <Drawer.Screen name="EscolhaCadastro" component={EscolhaCadastro} />
             <Drawer.Screen name="SenhaCadastro" component={SenhaCadastro} />
             <Drawer.Screen name="DadosArtisticos" component={DadosArtisticos} />
             <Drawer.Screen name="DadosPessoais" component={DadosPessoais} />
             <Drawer.Screen name="Home" component={Home} />
             <Drawer.Screen name="TrocaDeSenha" component={TrocaDeSenha} />
+            <Drawer.Screen name="QuemSomos" component={QuemSomos} />
             <Drawer.Screen name="EsqueciMinhaSenha" component={EsqueciMinhaSenha} />
         </Drawer.Navigator>
     );
@@ -67,6 +67,7 @@ export const CustomDrawerComp = (props) => {
                 <DrawerItem labelStyle={styles.pagInicial} label="Página Inicial" onPress={() => navigation.navigate('Home')} />
                 <DrawerItem labelStyle={styles.titulo} label="Troca de Senha" onPress={() => navigation.navigate('TrocaDeSenha')} />
                 <DrawerItem labelStyle={styles.titulo} label="Sobre o app" onPress={() => navigation.navigate('QuemSomos')} />
+                <DrawerItem labelStyle={{paddingTop:380, fontFamily: "Ubuntu", fontSize: 18,}} label="Sair" onPress={() => navigation.navigate('Login')} />
             </View>
         </DrawerContentScrollView>
     );
@@ -76,11 +77,11 @@ const styles = StyleSheet.create({
 
     titulo: {
         fontFamily: "Ubuntu",
-        fontSize: 20,
+        fontSize: 18,
     },
     pagInicial: {
         paddingTop:50,
         fontFamily: "Ubuntu",
-        fontSize: 20,
+        fontSize: 18,
     },
 });

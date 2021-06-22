@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View ,Text, StyleSheet, Image } from "react-native";
 import alisson from '../../images/image-group/alisson.jpg';
 import arthur from '../../images/image-group/arthur.jpg';
@@ -18,7 +18,6 @@ const fetchFont = () => {
 };
 
 const QuemSomos = ({navigation}) => {
-  const bodyText = useState("Somos um grupo de estudantes da Faculdade SENAC e acreditamos no potencial facilitador que a tecnologia proporciona nas relações humanas. Com esse pensamento, desenvolvemos este aplicativo com objetivo de ampliar a cultura musical favorecendo o empreendedorismo local.");
   const [fontLoaded, setFontLoaded] = React.useState(false);
 
   if (!fontLoaded) {
@@ -35,13 +34,16 @@ const QuemSomos = ({navigation}) => {
  
   return (
     
-      <View>
+      <>
         <View style={{flexDirection: "row"}}>
         <Icon reverse name='menu-outline' type='ionicon' color='#e6e6e6' onPress={() => navigation.openDrawer()}/>
         <HeaderBoasVindas title=" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Sobre o app" />
         </View>
         
-          <Text style={styles.baseText}> {bodyText} </Text>
+          <Text style={styles.baseText}> Somos um grupo de estudantes da Faculdade SENAC e acreditamos no potencial
+                                         facilitador que a tecnologia proporciona nas relações humanas. Com esse pensamento,
+                                          desenvolvemos este aplicativo com objetivo de ampliar a cultura musical favorecendo
+                                          o empreendedorismo local. </Text>
            
            <View style={styles.grupoImagens}>
               <Image style={styles.images} source={alisson}/>
@@ -57,7 +59,7 @@ const QuemSomos = ({navigation}) => {
 
             <Text style={styles.convite}> Deseja fazer parte desse lindo time? <Text style={{color: '#68378D'}}> Clique aqui</Text> </Text>
 
-      </View>
+      </>
   );
 }
 

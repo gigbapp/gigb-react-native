@@ -14,9 +14,13 @@ const fetchFont = () => {
  
 const DadosArtisticosCadastro = ({navigation,route}) => {
   const [fontLoaded, setFontLoaded] = React.useState(false);
+  const [solo, setSolo] = React.useState(false);
+  const [dueto, setDueto] = React.useState(false);
+  const [banda, setBanda] = React.useState(false);
   const [nomeArtistico, setNomeArtistico] = React.useState("");
   const [instagram, setInstagram] = React.useState("");
   const [youtube, setYoutube] = React.useState("");
+
 
   const validarCampos =  () => {
     if(!verificarCampoPreenchidoObrigatorio(nomeArtistico) || !verificarCampoPreenchidoObrigatorio(instagram)
@@ -73,14 +77,18 @@ const DadosArtisticosCadastro = ({navigation,route}) => {
             title="Solo"
             checkedIcon="dot-circle-o"
             uncheckedIcon="circle-o"
+            onPress={()=>{setSolo(true); setBanda(false); setDueto(false);}}
+            checked={solo}
           />
 
-          <CheckBox
+          <CheckBox 
             fontFamily="Ubuntu"
             containerStyle={{ backgroundColor: "transparent", border: "none" }}
             title="Dueto"
             checkedIcon="dot-circle-o"
             uncheckedIcon="circle-o"
+            onPress={()=>{setSolo(false); setBanda(false); setDueto(true);}}
+            checked={dueto}
           />
 
           <CheckBox
@@ -89,6 +97,8 @@ const DadosArtisticosCadastro = ({navigation,route}) => {
             title="Banda"
             checkedIcon="dot-circle-o"
             uncheckedIcon="circle-o"
+            onPress={()=>{setSolo(false); setBanda(true); setDueto(false);}}
+            checked={banda}
           />
         </View>
       </View>
