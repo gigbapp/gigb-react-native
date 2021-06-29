@@ -7,22 +7,29 @@ import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { Icon } from 'react-native-elements';
 
+import {ConsultaEventosArtistas} from '../../services/consultaEventos';
+
 const fetchFont = () => {
   return Font.loadAsync({
     Ubuntu: require("../../fonts/Ubuntu-Light.ttf"),
   });
 };
 const DATA = [];
-const listaDeEventos = listaEventos;
+
+let listaDeEventos = []
+
+ConsultaEventosArtistas(1).then((sucess) => {listaDeEventos = sucess});
+
 
 const getItem = (data, index) => ({
-  id: listaDeEventos[index].id ,
-  title: listaDeEventos[index].Título, 
-  organizador: `Organizador:  ${listaDeEventos[index].organizador}`, 
-  status: `Status:  ${listaDeEventos[index].Status}`,
-  dataEvento: `Data:  ${listaDeEventos[index].Data}`,
+  id: listaDeEventos[index].ID_Evento ,
+  title: listaDeEventos[index].nomeEvento, 
+  organizador: `Organizador:  ${listaDeEventos[index].Nome_Organizador}`, 
+  status: `Status:  ${listaDeEventos[index].status}`,
+  dataEvento: `Data:  ${listaDeEventos[index].data}`,
 
 });
+
 
 const getItemCount = (data) => listaDeEventos.length;
 
@@ -43,7 +50,6 @@ const Item = ({ title, dataEvento, status, organizador, chave  }) => (
 const Home = ({route, navigation}) => {
   const [fontLoaded, setFontLoaded] = React.useState(false);
   const nomeUsuario = route.params? route.params.nome: "@nomeUsuário";
-
   if (!fontLoaded) {
     return (
       <AppLoading
@@ -85,7 +91,7 @@ const styles = StyleSheet.create({
       },
       containerGeral: {
         paddingTop: 10,
-        paddingBottom: 150,
+        paddingBottom: 40,
         backgroundColor: '#f2f2f2'
       },
       containerHeader: {
@@ -112,7 +118,7 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         textAlign: 'left',
         margin:2, 
-        width: "72%",
+        width: "76%",
         fontFamily: "Ubuntu"
       },
       titleList: {
