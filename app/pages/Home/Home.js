@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, VirtualizedList, StatusBar, Image } from 'react-native';
 import HeaderBoasVindas from '../../components/HeaderBoasVindas/HeaderBoasVindas';
 import music from '../../images/icon/iconMusic.jpg';
-import listaEventos from '../../util/EventosUtil.json';
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { Icon } from 'react-native-elements';
